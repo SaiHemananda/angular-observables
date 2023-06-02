@@ -16,6 +16,42 @@ export class AppComponent  {
       2. set the name property of this component to be the data in the oName observable
       3. get the flops out of the oFlops observable and get them displaying on the screen
     */
+     oActor
+      .pipe(
+        map((response) => {
+          this.name = response.name;
+          return response.name;
+        })
+      )
+      .subscribe( response => {
+        console.log(response);
+      });
     
+    oName
+    .pipe(
+      // map(response => {
+      //     response = this.name;
+      //     return response;
+      // })
+    )
+    .subscribe( response => { 
+      console.log(response)
+    } );
+
+    oFlops
+    // .pipe(
+    //   map( response =>{
+    //     response.forEach( title => {
+    //       let i=0;
+    //       this.flops[i] = title;
+    //       i++;
+    //       return response;
+    //     })
+    //   })
+    // )
+     .subscribe( response => {
+      this.flops= response;
+      console.log(response);
+     });
   }
 }
